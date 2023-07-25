@@ -10,7 +10,7 @@ export default {
   },
   methods: {
     handleClick() {
-      return this.$router.push('/')
+      return this.$router.push({ name: "home" })
     }
   }
 }
