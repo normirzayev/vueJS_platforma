@@ -8,7 +8,7 @@
     </div>
     <div class="col-12 d-flex justify-content-end ">
       <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
-      <Button :label="'send'" :type="'submit'" :disabled="isLoading" class="btn btn-primary"></Button>
+      <Button :label="'send'" :type="'submit'"  class="btn btn-primary"></Button>
     </div>
   </form>
 </template>
@@ -22,7 +22,7 @@ export default {
   methods: {
     handleSubmit(e) {
       e.preventDefault();
-      this.$store.commit('setLoading')
+      this.$store.dispatch('login')
     }
   }
 
