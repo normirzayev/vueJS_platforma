@@ -1,4 +1,5 @@
 import AuthService from "../service/auth";
+import { setToken } from "../support/manageToke";
 const state = {
   isLoading: false,
   user: null,
@@ -29,8 +30,9 @@ const actions = {
       context.commit("loginStart");
       AuthService.login(user)
         .then((response) => {
-          context.commit("loginSuccess", response.data.user);
-          resolve(response.data.user);
+          context.commit("loginSuccess", response.data);
+          resolve(response.data);
+          setToken("token", response.data.token);
         })
         .catch((err) => {
           context.commit("loginFail", err.response);
