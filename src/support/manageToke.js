@@ -1,6 +1,6 @@
 export const getToken = (key) => {
   try {
-    JSON.parse(localStorage.getItem(key));
+    return JSON.parse(localStorage.getItem(key));
   } catch {
     console.log("token olishda muammo");
     return null;

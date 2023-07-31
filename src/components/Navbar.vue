@@ -27,9 +27,6 @@ export default {
           login
         </RouterLink>
       </li>
-      <li>
-        <RouterLink :to="{ name: 'register' }"> Register </RouterLink>
-      </li>
     </ul>
   </nav>
 </template>

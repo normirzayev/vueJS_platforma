@@ -22,6 +22,21 @@ const mutations = {
     state.isLoading = false;
     state.errors = payload;
   },
+  getUserStart() {
+    state.isLoading = true;
+    state.user = null;
+    state.errors = null;
+  },
+
+  getUserSuccess(state, payload) {
+    state.isLoading = false;
+    state.user = payload;
+  },
+
+  getUserError(state, payload) {
+    state.isLoading = false;
+    state.errors = payload;
+  },
 };
 
 const actions = {
@@ -37,6 +52,19 @@ const actions = {
         .catch((err) => {
           context.commit("loginFail", err.response);
           reject(err.response);
+        });
+    });
+  },
+  getUser(context) {
+    return new Promise((resolve) => {
+      context.commit("getUserStart");
+      AuthService.getUser()
+        .then((response) => {
+          context.commit("getUserSuccess", response.data);
+          resolve(response.data);
+        })
+        .catch(() => {
+          context.commit("getUserError");
         });
     });
   },
